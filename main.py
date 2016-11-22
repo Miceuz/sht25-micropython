@@ -1,3 +1,10 @@
+# This program is distributed under Apache License Version 2.0
+#
+# © Albertas Mickenas, 2016
+# mic@wemakethings.net
+# albertas@technariumas.lt
+#
+
 import time
 from machine import I2C
 from machine import Pin
