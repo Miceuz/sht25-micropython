@@ -78,7 +78,7 @@ class SHT25:
 		return self.toTemperature(self.runI2CCommand(self.CMD_READ_TEMPERATURE, 3))
 
 	def getHumidity(self):
-		return self.toTemperature(self.runI2CCommand(self.CMD_READ_HUMIDITY, 3))
+		return self.toHumidity(self.runI2CCommand(self.CMD_READ_HUMIDITY, 3))
 	
 	def getUserRegister(self):
 		return self.decodeUserReg(self.runI2CCommand(self.CMD_READ_REGISTER, 1))
