@@ -5,8 +5,6 @@
 # albertas@technariumas.lt
 #
 
-from machine import I2C
-from machine import Pin
 import time
 
 class SHT25:
@@ -19,8 +17,8 @@ class SHT25:
 	CMD_WRITE_REGISTER   = 0xE6
 	CMD_RESET 			 = 0xFE
 
-	def __init__(self):
-		self.i2c = I2C(scl=Pin(5), sda=Pin(4))
+	def __init__(self, _i2c):
+		self.i2c = _i2c
 
 	def toTemperature(self, buf):
 		return -46.85 + 175.72 * ((buf[0] << 8) + buf[1]) /2**16
@@ -90,7 +88,6 @@ class SHT25:
 		b[0] = self.CMD_WRITE_REGISTER
 		b[1] = register & 0b11000111
 		self.i2c.writeto(self.ADDR, b)
-
 
 	def reset(self):
 		self.runI2CCommand(self.CMD_RESET, 0)
